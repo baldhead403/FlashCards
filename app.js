@@ -13,22 +13,29 @@ app.use('/bootstrap',express.static(__dirname + '/node_modules/pug-bootstrap'))
 app.use(express.static(__dirname + "/public"));
 
 
-// MongoClient.connect("", (err,database)=>{
-    // if(err) return console.log(err)
-
-// })
+MongoClient.connect("mongodb://flashg:ming187@ds113703.mlab.com:13703/triviaflash", (err,database)=>{
+    if(err) return console.log(err)
+    db = database.db('flashg')
+})
 
 
 
 app.get('/', function(req,res){
+    let cursor = db.collection('flashg').find().toArray(function (err,result) {
+        if(err) return console.log(err) 
+        res.render('index.pug', {question:question},{hint:hint},{answer:result})
+    })
     
-    res.render('index.pug')
 })
 
 
-// app.post(req,res ,(req,res)=> {
-
-// })
+app.post(req,res ,(req,res)=> {
+    console.log("post successful")
+    db.collection('flashg').save(req.body,(err,result)=> {
+        res.redirect('/')
+        console.log("Saved to database")
+        })
+})
    
 
 

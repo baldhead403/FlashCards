@@ -1,15 +1,43 @@
-/* .container{
+
+.container{
+    display: flex;
+    float: right;
     height: 100%;
     width: 100%;
-    background-color: cornflowerblue;
-    
-} */
-#card{
-    background-image: url(king-of-spades.jpg);
-    height: 350px;
-    width: 200px;
-    border-radius: 10px;
     text-align: center;
-
+   
     
+    
+    
+}
+#card1{
+    
+    float: right;
+    background-size: 110%;
+    background-image: url(king-of-spades.jpg);
+    height: 450px;
+    width: 300px;
+    border-radius: 10px;
+    margin: 2px;   
+}
+
+#question{
+   
+    height: 50px;
+    width: auto;
+    margin-bottom: 50px;
+
+}
+
+button{
+    border-radius: 5px;
+    margin: 10px;
+    background-color: darkgray;
+   justify-self: left;
+}
+
+#hint{
+    margin-top: 4px;
+    height: 50px;
+    width: auto;
 }

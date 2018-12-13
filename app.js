@@ -8,9 +8,27 @@ let db
 
 
 app.use('view engine','pug')
-app.get()
-app.post()
+app.use(bodyparser.urlencoded({extended:true}))
 
+
+MongoClient.connect("", (req,res)=>{
+
+
+})
+
+
+
+app.get('/', function(req,res){
+    console.log()
+
+})
+
+
+app.post(req,res ,function(req,res) {
+    res.render('/')
+
+})
+   
 
 
 app.listen(3000,function () {

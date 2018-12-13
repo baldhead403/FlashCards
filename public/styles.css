@@ -4,9 +4,11 @@
     background-color: cornflowerblue;
     
 }
-.card{
+#card{
     background-color: blue;
-    height: 500px;
-    width: 500px;
+    height: 350px;
+    width: 200px;
+    border-radius: 10%;
+    
     
 }

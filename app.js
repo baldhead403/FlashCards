@@ -9,6 +9,7 @@ let db
 
 app.set('view engine','pug')
 app.use(bodyparser.urlencoded({extended:true}))
+app.use('/bootstrap',express.static(__dirname + '/node_modules/pug-bootstrap'))
 app.use(express.static(__dirname + "/public"));
 
 

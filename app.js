@@ -9,6 +9,7 @@ let db
 
 app.set('view engine','pug')
 app.use(bodyparser.urlencoded({extended:true}))
+app.use(express.static(__dirname + "/public"));
 
 
 // MongoClient.connect("", (err,database)=>{
@@ -21,7 +22,6 @@ app.use(bodyparser.urlencoded({extended:true}))
 app.get('/', function(req,res){
     
     res.render('index.pug')
-    app.use(express.static(__dirname + "/public"));
 })
 
 

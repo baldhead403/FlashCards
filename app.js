@@ -7,30 +7,30 @@ let db
 
 
 
-app.use('view engine','pug')
+app.set('view engine','pug')
 app.use(bodyparser.urlencoded({extended:true}))
 
 
-MongoClient.connect("", (req,res)=>{
+// MongoClient.connect("", (err,database)=>{
+    // if(err) return console.log(err)
 
-
-})
+// })
 
 
 
 app.get('/', function(req,res){
-    console.log()
+    
+    res.render('index.pug')
 
 })
 
 
-app.post(req,res ,function(req,res) {
-    res.render('/')
+// app.post(req,res ,(req,res)=> {
 
-})
+// })
    
 
 
 app.listen(3000,function () {
-    
+    console.log('listening on port 3000')
 })

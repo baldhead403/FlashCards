@@ -21,7 +21,7 @@ app.use(bodyparser.urlencoded({extended:true}))
 app.get('/', function(req,res){
     
     res.render('index.pug')
-
+    app.use(express.static(__dirname + "/public"));
 })
 
 

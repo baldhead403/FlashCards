@@ -15,23 +15,31 @@ app.use(express.static(__dirname + "/public"));
 
 MongoClient.connect("mongodb://flashg:ming187@ds113703.mlab.com:13703/triviaflash", (err,database)=>{
     if(err) return console.log(err)
-    db = database.db('flashg')
+    db = database.db('triviaflash')
 })
 
 
 
 app.get('/', function(req,res){
-    let cursor = db.collection('flashg').find().toArray(function (err,result) {
+    let cursor = db.collection('triviaflash').find().toArray(function (err,result) {
         if(err) return console.log(err) 
-        res.render('index.pug', {question:question},{hint:hint},{answer:result})
     })
     
 })
 
 
-app.post(req,res ,(req,res)=> {
+app.post("/answer" ,(req,res)=> {
     console.log("post successful")
-    db.collection('flashg').save(req.body,(err,result)=> {
+    db.collection('triviaflash').save(req.body,(err,result)=> {
+        res.redirect('/')
+        res.render('index.pug', )
+        console.log("Saved to database")
+        })
+})
+
+app.post("/answer" ,(req,res)=> {
+    console.log("post successful")
+    db.collection('triviaflash').save(req.body,(err,result)=> {
         res.redirect('/')
         console.log("Saved to database")
         })

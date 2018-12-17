@@ -7,25 +7,32 @@ html(lang="en")
         link(rel='stylesheet' href="/styles.css")
         
         title Flash Cards App
-
+    .jumbotron.jumbotron-fluid
+      h1 Trivia Flash Card
     .container
-     #title
-      h2 Trivia Flash Card
-      form#card
-        #question
-        //- input(type="text", name="")
-        br
-        button(type="submit") Answer
-        #hint
-        button(type="submit") Hint
-      form#card 
-        #answer
-        input(type="text", name="")
-        br
-        button(type="submit") Submit
+      div(class="flip-card")
+       div(class="flip-card-inner")
+        div(class="flip-card-front")
+             #question
+             br
+             #hint
+             button#answerButton(type="submit") Answer
+             button#hintButton(type="submit") Hint
+        div(class="flip-card-back")
+            #answer
+            button#backButton(type="submit") Go Back ↩️ 
+
+    .modal
+        .modal-content
+            input#mquest(type="text", name="question")
+            input#mhint(type="text", name="hint")
+            input#manswer(type="text", name="answer")
+            button#qaButton(type="submit") Submit
+            button#clear(type="submit") Clear
 
 
-
-
+    script(src="scripts.js")
+    script( src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous")
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
     script(src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous")
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous")

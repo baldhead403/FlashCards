@@ -7,46 +7,42 @@ let db
 
 
 
-app.set('view engine','pug')
-app.use(bodyparser.urlencoded({extended:true}))
-app.use('/bootstrap',express.static(__dirname + '/node_modules/pug-bootstrap'))
+app.set('view engine', 'pug')
+app.use(bodyparser.urlencoded({ extended: true }))
+app.use('/bootstrap', express.static(__dirname + '/node_modules/pug-bootstrap'))
 app.use(express.static(__dirname + "/public"));
 
 
-MongoClient.connect("mongodb://flashg:ming187@ds113703.mlab.com:13703/triviaflash", (err,database)=>{
-    if(err) return console.log(err)
+MongoClient.connect("mongodb://flashg:ming187@ds113703.mlab.com:13703/triviaflash", (err, database) => {
+    if (err) return console.log(err)
     db = database.db('triviaflash')
 })
 
 
 
-app.get('/', function(req,res){
-    let cursor = db.collection('triviaflash').find().toArray(function (err,result) {
-        if(err) return console.log(err) 
+app.get('/', function (req, res) {
+    let cursor = db.collection('flashdata').find().toArray(function (err, result) {
+        res.render('index.pug', {question:result})
+        if (err) return console.log(err)
+        
     })
-    
+
 })
 
-
-app.post("/answer" ,(req,res)=> {
+app.post("/modal" ,(req,res)=> {
     console.log("post successful")
-    db.collection('triviaflash').save(req.body,(err,result)=> {
-        res.redirect('/')
-        res.render('index.pug', )
-        console.log("Saved to database")
-        })
-})
-
-app.post("/answer" ,(req,res)=> {
-    console.log("post successful")
-    db.collection('triviaflash').save(req.body,(err,result)=> {
+    db.collection('flashdata').save(req.body,(err,result)=> {
+       
         res.redirect('/')
         console.log("Saved to database")
         })
 })
-   
 
 
-app.listen(3000,function () {
+
+
+
+
+app.listen(3000, function () {
     console.log('listening on port 3000')
 })

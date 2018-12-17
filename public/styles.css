@@ -1,26 +1,39 @@
-
+.jumbotron{
+    text-align: center;
+    background-color:blue;
+    box-shadow: -5px 5px 10px black;
+}
+.jumbotron h1 {
+    font-size: 60px;
+    color: red;
+    text-shadow: 4px 2px gold;
+}
 .container{
     display: flex;
     float: right;
     height: 100%;
     width: 100%;
-    text-align: center;
-   
-    
-    
-    
+    text-align: center;  
 }
-#card{
-    
-    float: right;
-    background-size: 110%;
-    background-image: url(king-of-spades.jpg);
-    height: 450px;
-    width: 300px;
-    border-radius: 10px;
-    margin: 2px;   
+.modal{
+    display:none;
+    position: fixed;
+    z-index: 1;
+    height: 100%;
+    width: 50%;
+    overflow: auto;
 }
 
+button{
+    border-radius: 5px;
+    margin: 10px;
+    background-color: darkgray;
+    justify-self: left;
+    box-shadow: 1px 1px 5px black;
+}
+#backButton{
+    
+}
 #question{
    
     height: 50px;
@@ -28,16 +41,47 @@
     margin-bottom: 50px;
 
 }
-
-button{
-    border-radius: 5px;
-    margin: 10px;
-    background-color: darkgray;
-   justify-self: left;
-}
-
 #hint{
     margin-top: 4px;
     height: 50px;
     width: auto;
 }
+#answer{
+    color:red;
+    height: 50px;
+    width: 100%;
+}
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 450px;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  }
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  .flip-card-front {
+    background-size: 110%;
+    background-image: url(king-of-spades.jpg);
+    color: white;
+  }
+  .flip-card-back {
+    background-size: 110%;
+    background-image: url(king-of-spades.jpg);
+    transform: rotateY(180deg);
+  }
+   .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }   

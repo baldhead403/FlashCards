@@ -1,10 +1,11 @@
 let i = 0 
 function nextQ(data) {
-$.ajax(
-    {
-        type:"GET",
-        url:"/flashdata",
-        success: function (data) {    
+    $.ajax(
+        {
+            type:"GET",
+            url:"/flashdata",
+            success: function (data) {    
+        
             if (i <= data.length) {
                 
                 i++
@@ -24,7 +25,7 @@ $(".answer").hide()
     
 $('#answerButton').click(function () {
     $(".flip-card-front").slideUp(-100)
-        $(".flip-card-back").slideDown(300)
+        $(".flip-card-back").slideDown(200)
         $(".answer").show()
 });
 

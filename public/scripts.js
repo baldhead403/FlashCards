@@ -56,6 +56,7 @@
 
     let i = 0
     function disQuestion(data) {
+
         if (i <= data.length) {
             
             i++
@@ -63,6 +64,7 @@
             $(".question").html(data[i].question)
             $(".hint").html(data[i].hint)
             $(".answer").html(data[i].answer)
+            
         if (i >= data.length) {
             i = 0
         }

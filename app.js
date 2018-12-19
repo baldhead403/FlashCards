@@ -41,7 +41,7 @@ app.get('/flashdata',function (req,res) {
 app.post("/triviaflash" ,(req,res)=> {
     console.log("post successful")
     db.collection('flashdata').save(req.body,(err,result)=> {
-        res.redirect('/flashdata')
+        res.redirect('/')
         console.log("Saved to database")
     })
 })

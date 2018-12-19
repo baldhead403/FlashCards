@@ -1,15 +1,15 @@
 .jumbotron{
     text-align: center;
-    background-color: green;
+    background-color: darkgreen;
     box-shadow: -5px 5px 10px black;
 }
 .jumbotron h1 {
     font-size: 60px;
     color:blue;
-    text-shadow: 4px 2px gold;
+    text-shadow: 3px 2px black;
 }
 .container{
-    display: flex;
+    
     float: right;
     height: 100%;
     width: 100%;
@@ -24,9 +24,10 @@
     overflow: auto;
 }
 button{
+    color: white;
     border-radius: 5px;
     margin: 10px;
-    background-color: darkgray;
+    background-color: darkgoldenrod;
     box-shadow: 1px 1px 5px black;
 }
 
@@ -85,13 +86,13 @@ button{
   }
   .modal{
       display: none;
-      background-color: blue;
+      background-image:url(flashcard.jpg);
       height: 450px;
       width: 300px;
       z-index: 1;
       position: absolute;
       overflow: auto;
-      background-color: lightgray;
+    
   }
   .modal-content{
       margin: 15px auto;

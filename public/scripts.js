@@ -9,7 +9,7 @@
                url:"/flashdata",
                success: function (data) {
                    disQuestion(data)
-                },
+               },
                 error:function(error)    
                 {
                     console.log(error)
@@ -33,39 +33,54 @@
         $(".hint").hide()
     
 });
+$("#new").click(function () {
+    nextQ()
+})
 
-
-    $("#new").click(function () {
-       let i = Math.floor(Math.random())
-    //    $(".question").html(data[i].question)
-    })
+$(".returnB").click(function () {
+    $(".modal").hide()
+    $(".question").show()
     
-    $(".returnB").click(function () {
-        $(".modal").hide()
-        $(".question").show()
-        
-    });
-    $("#backButton").click(function () {
-        $(".flip-card-back").slideUp(-100)
-          $(".flip-card-front").slideDown(200)
-            $(".question").show()
-    });
-    $("#triviaB").click(function () {
-        $(".modal").show()
-    });
+});
 
-    let i = 0
-    function disQuestion(data) {
+$("#backButton").click(function () {
+    $(".flip-card-back").slideUp(-100)
+    $(".flip-card-front").slideDown(200)
+    $(".question").show()
+});
 
-        if (i <= data.length) {
-            
-            i++
-        }
-            $(".question").html(data[i].question)
-            $(".hint").html(data[i].hint)
-            $(".answer").html(data[i].answer)
-            
-        if (i >= data.length) {
-            i = 0
-        }
+$("#triviaB").click(function () {
+    $(".modal").show()
+});
+
+let i = 0
+function disQuestion(data) {
+    
+    $(".question").html(data[i].question)
+    $(".hint").html(data[i].hint)
+    $(".answer").html(data[i].answer)
+    if (i <= data.length) {
+    
     }
+    i++
+        
+    if (i >= data.length) {
+    }
+    i = 0
+
+}
+       function nextQ(data) {
+           $.ajax(
+               {
+                   type:"GET",
+                   url:"/flashdata",
+                   success: function (data) {    
+                           if (i <= data.length) {
+                        }
+                        i++
+                           $(".question").html(data[i].question)
+                           $(".hint").html(data[i].hint)
+                           $(".answer").html(data[i].answer)          
+                },    
+             })
+       }

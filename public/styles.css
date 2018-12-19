@@ -28,28 +28,26 @@ button{
     border-radius: 5px;
     margin: 10px;
     background-color: darkgray;
-    justify-self: left;
+    
     box-shadow: 1px 1px 5px black;
 }
-#backButton{
-    
-}
+
 #question{
    
-    height: 50px;
+    height: auto;
     width: auto;
     margin-bottom: 50px;
-
+    margin-top: 20px;
 }
 #hint{
     margin-top: 4px;
-    height: 50px;
+    height: auto;
     width: auto;
 }
 #answer{
-    color:red;
-    height: 50px;
-    width: 100%;
+    color:white;
+    height: auto;
+    width: auto;
 }
 .flip-card {
     background-color: transparent;
@@ -66,22 +64,45 @@ button{
     transition: transform 0.8s;
     transform-style: preserve-3d;
   }
-  .flip-card-front, .flip-card-back {
+  .flip-card-front{
     position: absolute;
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+    
   }
+ 
   .flip-card-front {
+    image-orientation: 90turn;  
     background-size: 110%;
-    background-image: url(king-of-spades.jpg);
+    background-image: url(2841.jpg);
     color: white;
   }
   .flip-card-back {
-    background-size: 110%;
-    background-image: url(king-of-spades.jpg);
-    transform: rotateY(180deg);
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: 120%;
+    background-image: url(2841.jpg);
+    background-repeat: no-repeat;
+    
   }
-   .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }   
+  .modal{
+      display: none;
+      background-color: blue;
+      height: 450px;
+      width: 300px;
+      z-index: 1;
+      position: absolute;
+      overflow: auto;
+      background-color: lightgray;
+  }
+  .modal-content{
+      margin: 15px auto;
+      padding: 20px;
+      border: 1px solid black;
+      width: 80%;
+      height: 80%;
+      background-color: dimgrey;
+  }

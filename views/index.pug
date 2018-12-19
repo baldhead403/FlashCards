@@ -5,7 +5,7 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm' crossorigin='anonymous')
         link(rel='stylesheet' href="/styles.css")
-        
+
         title Flash Cards App
     .jumbotron.jumbotron-fluid
       h1 Trivia Flash Card
@@ -13,26 +13,37 @@ html(lang="en")
       div(class="flip-card")
        div(class="flip-card-inner")
         div(class="flip-card-front")
-             #question
-             br
-             #hint
-             button#answerButton(type="submit") Answer
-             button#hintButton(type="submit") Hint
+              #question
+                h2.question
+              br
+            
+              #hint
+                h3.hint
+              br
+              button#hintButton(type="submit") Hint
+              button#answerButton(type="submit") Answer
+              button#new(type="submit") New ?
+              
         div(class="flip-card-back")
-            #answer
-            button#backButton(type="submit") Go Back ↩️ 
+            
+                #answer
+                    h2.answer
+                    br
+                    button#backButton(type="submit") Go Back ↩️ 
+                    button#triviaB(type="submit") Add Trivia? 
 
     .modal
         .modal-content
-            input#mquest(type="text", name="question")
-            input#mhint(type="text", name="hint")
-            input#manswer(type="text", name="answer")
-            button#qaButton(type="submit") Submit
-            button#clear(type="submit") Clear
+            form(action="/triviaflash", method="POST")
+                input.mquest(type="text", name="question")
+                input.mhint(type="text", name="hint")
+                input.manswer(type="text", name="answer")
+                button.qaButton(type="submit") Submit
+            button.returnB(type="submit") Return
 
 
-    script(src="scripts.js")
     script( src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous")
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
     script(src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous")
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous")
+    script(src="scripts.js")

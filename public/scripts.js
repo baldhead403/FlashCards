@@ -1,37 +1,68 @@
-function fcards() {
+
+   function display() {
+       $(".hint").hide()
+        $(".answer").hide()
+       
+       $.ajax(
+           {
+               type:"GET",
+               url:"/flashdata",
+               success: function (data) {
+                   disQuestion(data)
+                },
+                error:function(error)    
+                {
+                    console.log(error)
+                },  
+            }
+             )
+        } 
+    display()
     
-
- 
     $('#answerButton').click(function () {
-        document.getElementById('answer').style.display="none"
-        document.getElementById('flip-card-back').innerHTML= answer
+        $(".flip-card-front").slideUp(-100)
+          $(".flip-card-back").slideDown(300)
+            $(".answer").show()
     });
-
+    
     $('#hintButton').click(function () {
-       $("hint").show().val()
-
-    });
-
-    $('#qaButton').click(function () {
-        $("#modal").show()
+            $(".hint").show()
         
     });
-    $("#clear").click(function () {
-        document.getElementById("mquest").innerHTML = ""
-        document.getElementById("mhint").innerHTML = ""
-        document.getElementById("manswer").innerHTML = ""
-        
+    $('#hintButton').dblclick(function () {
+        $(".hint").hide()
+    
+});
+
+
+    $("#new").click(function () {
+       
     })
+    
+    $(".returnB").click(function () {
+        $(".modal").hide()
+        $(".question").show()
+        
+    });
+    $("#backButton").click(function () {
+        $(".flip-card-back").slideUp(-100)
+          $(".flip-card-front").slideDown(100)
+            $(".question").show()
+    });
+    $("#triviaB").click(function () {
+        $(".modal").show()
+    });
 
-}
-
-
-
-
-
-
-
-
-
-
-
+    let i = 0
+    function disQuestion(data) {
+        if (i <= data.length) {
+            
+            i++
+        }
+            $(".question").html(data[i].question)
+            $(".hint").html(data[i].hint)
+            $(".answer").html(data[i].answer)
+        if (i >= data.length) {
+            i = 0
+        }
+    }

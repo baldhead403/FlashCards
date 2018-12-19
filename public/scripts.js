@@ -1,36 +1,39 @@
-
-   function display() {
-       $(".hint").hide()
-        $(".answer").hide()
-       
-       $.ajax(
-           {
-               type:"GET",
-               url:"/flashdata",
-               success: function (data) {
-                   disQuestion(data)
-               },
-                error:function(error)    
-                {
-                    console.log(error)
-                },  
+let i = 0 
+function nextQ(data) {
+$.ajax(
+    {
+        type:"GET",
+        url:"/flashdata",
+        success: function (data) {    
+            if (i <= data.length) {
+                
+                i++
             }
-             )
-        } 
-    display()
+            if (i >= data.length) {
+
+                i = 0
+            }
+            $(".question").html(data[i].question)
+            $(".hint").html(data[i].hint)
+            $(".answer").html(data[i].answer)
+    },    
+    })
+}
+$(".hint").hide()
+$(".answer").hide()
     
-    $('#answerButton').click(function () {
-        $(".flip-card-front").slideUp(-100)
-          $(".flip-card-back").slideDown(300)
-            $(".answer").show()
-    });
+$('#answerButton').click(function () {
+    $(".flip-card-front").slideUp(-100)
+        $(".flip-card-back").slideDown(300)
+        $(".answer").show()
+});
+
+$('#hintButton').click(function () {
+        $(".hint").show()
     
-    $('#hintButton').click(function () {
-            $(".hint").show()
-        
-    });
-    $('#hintButton').dblclick(function () {
-        $(".hint").hide()
+});
+$('#hintButton').dblclick(function () {
+    $(".hint").hide()
     
 });
 $("#new").click(function () {
@@ -52,35 +55,3 @@ $("#backButton").click(function () {
 $("#triviaB").click(function () {
     $(".modal").show()
 });
-
-let i = 0
-function disQuestion(data) {
-    
-    $(".question").html(data[i].question)
-    $(".hint").html(data[i].hint)
-    $(".answer").html(data[i].answer)
-    if (i <= data.length) {
-    
-    }
-    i++
-        
-    if (i >= data.length) {
-    }
-    i = 0
-
-}
-       function nextQ(data) {
-           $.ajax(
-               {
-                   type:"GET",
-                   url:"/flashdata",
-                   success: function (data) {    
-                           if (i <= data.length) {
-                        }
-                        i++
-                           $(".question").html(data[i].question)
-                           $(".hint").html(data[i].hint)
-                           $(".answer").html(data[i].answer)          
-                },    
-             })
-       }

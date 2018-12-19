@@ -36,7 +36,8 @@
 
 
     $("#new").click(function () {
-       
+       let i = Math.floor(Math.random())
+    //    $(".question").html(data[i].question)
     })
     
     $(".returnB").click(function () {

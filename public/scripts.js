@@ -47,7 +47,7 @@
     });
     $("#backButton").click(function () {
         $(".flip-card-back").slideUp(-100)
-          $(".flip-card-front").slideDown(100)
+          $(".flip-card-front").slideDown(200)
             $(".question").show()
     });
     $("#triviaB").click(function () {

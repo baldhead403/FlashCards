@@ -1,6 +1,12 @@
+html, body{
+    background-image: url(35323587.jpg);
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+}
 .jumbotron{
     text-align: center;
-    background-color: darkgreen;
+    background-color:lightgreen;
     box-shadow: -5px 5px 10px black;
 }
 .jumbotron h1 {
@@ -9,11 +15,10 @@
     text-shadow: 3px 2px black;
 }
 .container{
-    
-    float: right;
     height: 100%;
     width: 100%;
-    text-align: center;  
+    text-align: center;
+    
 }
 .modal{
     display:none;
@@ -87,19 +92,21 @@ button{
   }
   .modal{
       display: none;
-      background-image:url(flashcard.jpg);
       height: 450px;
       width: 300px;
       z-index: 1;
       position: absolute;
       overflow: auto;
-    
-  }
-  .modal-content{
+      
+    }
+    .modal-content{
+        
+        background-size: 100%;
       margin: 15px auto;
       padding: 20px;
       border: 1px solid black;
       width: 80%;
       height: 80%;
-      background-color: dimgrey;
+      background-image: url(images.jpeg);
+
   }

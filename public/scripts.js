@@ -40,7 +40,9 @@ $('#hintButton').dblclick(function () {
 $("#new").click(function () {
     nextQ()
 })
-
+$(".updateM").click(function () {
+    updateDB()
+})
 $(".returnB").click(function () {
     $(".modal").hide()
     $(".question").show()
@@ -56,3 +58,18 @@ $("#backButton").click(function () {
 $("#triviaB").click(function () {
     $(".modal").show()
 });
+function updateDB() {
+    let changeQ = $(".mquest").val()
+    let changeH = $(".mhint").val()
+    let changeA = $(".manswer").val()
+
+    $.ajax({
+        type: "PUT",
+        url: '/flashdata/update/'+ $(this).data('mquest') + $(this).data('mhint') + $(this).data('manswer'),
+        data: {flashdata_question: changeQ, flashdata_hint: changeH, flashdata_answer: changeA}
+    }).done(function (res) {
+        console.log(res);
+        window.location.replace('http://localhost:8080');
+        
+    })
+}

@@ -40,12 +40,13 @@ app.post("/triviaflash" ,(req,res)=> {
         
     })
 })
+app.put("/triviaflash/update/", (req,res)=>{ 
+db.collection.findAndModify(
+    {
+        query:{question: "", hint:"", answer:""},
+        sort:1,
+        update: {$inc:{question:""},$inc:{hint:""},$inc:{answer:""}},
+        upsert:true,
 
-
-
-
-
-
-
-
-
+    })
+}) 

@@ -38,37 +38,35 @@ app.get('/flashdata',function (req,res) {
 })
 
 app.post("/triviaflash" ,(req,res)=> {
-    db.flashdata.insertMany(req.body,(err,result)=> {
+    db.collection("flashdata").save(req.body,(err,result)=> {
         res.redirect('/')
         
     })
 })
-app.post("/update", (req,res)=> {
-    let id = req.body.id
-    let item ={
+
+app.put("/flashdata", (req,res)=> {
+    let id = req.body._id
+    console.log(id)
+    let items ={
         question: req.body.question,
         hint: req.body.hint,
         answer: req.body.answer
     } 
-    Mongo.connect(url, function (err,db) {
-        assert.equal(null,err);
-        db.collection('flashdata').updateOne({"_id": objectId(id)}, {$set:item}, function (err, result) {
-            assert.equal(null,err);
-            console.log('result')
-            db.close()
-        })
+    db.collection("flashdata").findOneAndUpdate({_id: objectId(id)}, {$set:items}, function ( result) {
+        assert.equal(null);
+        console.log(items)
+        res.redirect('/')
     })
-    
-    
+    res.send(items)
 }) 
-app.post("/delete", (req,res)=> {
-    id = req.body.id
-    Mongo.connect(url, function (err,db) {
-        assert.equal(null,err);
-        db.collection('flashdata').updateOne({"_id": objectId(id)}, function (err, result) {
-            assert.equal(null,err);
+
+app.delete("/flashdata", (req,res)=> {
+    id = req.body._id
+       console.log(id) 
+        db.collection('flashdata').findOneAndDelete({"_id": objectId(id)}, function ( result) {
             console.log('item updated')
-            db.close()
+            res.redirect('/')
+            
         })
+        res.send(id)
     })
-})

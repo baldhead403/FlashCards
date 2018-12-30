@@ -60,20 +60,20 @@ $("#triviaB").click(function () {
     $(".modal").show()
 });
 
-function updateDB(req,res) {
+function updateDB() {
     
     $(".updateMe").click(function (id) {
-        let id= req.body.id
+        let id= req.body._id
+        console.log(id)
         $.ajax({
-            method: "POST",
-            url:"/flashdata",
+            url:"/triviaflash",
+            type: "PUT",
             
-            data: {"_id":id},
+            data: {"id":_id},
             success: function (data) {
                 $(".question").val(data[i].question)
                 $(".hint").val(data[i].hint)
                 $(".answer").val(data[i].answer)
-                console.log(id)
             }
         })
     })
@@ -85,11 +85,11 @@ $(".updateM").click(function () {
 })
 
 $(".updateMe").click(function () {
+    $(".question").show()
     updateDB()
     $(".modal2").hide()
     $(".modal3").hide()
     $(".modal").hide()
-    $(".question").show()
 })
 function deleteDB() {
    $(".deleteMe").click(function () {
@@ -99,8 +99,8 @@ function deleteDB() {
     $(".question").show()
 
     $.ajax({
-        method: "POST",
-        url:"/delete",
+        url:"/triviaflash",
+        type: "DELETE",
         success:function (data) {
             $(".question").html("")
             $(".hint").html("")

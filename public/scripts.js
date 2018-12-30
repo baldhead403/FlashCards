@@ -1,3 +1,6 @@
+$(".question").show()
+$(".hint").hide()
+$(".answer").hide()
 let i = 0 
 function nextQ(data) {
     $.ajax(
@@ -20,8 +23,6 @@ function nextQ(data) {
     },    
     })
 }
-$(".hint").hide()
-$(".answer").hide()
     
 $('#answerButton').click(function () {
     $(".flip-card-front").slideUp(-100)
@@ -40,14 +41,6 @@ $('#hintButton').dblclick(function () {
 $("#new").click(function () {
     nextQ()
 })
-$(".updateM").click(function () {
-    updateDB()
-})
-$(".returnB").click(function () {
-    $(".modal").hide()
-    $(".question").show()
-    
-});
 
 $("#backButton").click(function () {
     $(".flip-card-back").slideUp(-100)
@@ -55,21 +48,73 @@ $("#backButton").click(function () {
     $(".question").show()
 });
 
+$(".returnB").click(function () {
+    $(".modal").hide()
+    $(".question").show()
+    
+});
+
+
+
 $("#triviaB").click(function () {
     $(".modal").show()
 });
-function updateDB() {
-    let changeQ = $(".mquest").val()
-    let changeH = $(".mhint").val()
-    let changeA = $(".manswer").val()
 
-    $.ajax({
-        type: "PUT",
-        url: '/flashdata/update/'+ $(this).data('mquest') + $(this).data('mhint') + $(this).data('manswer'),
-        data: {flashdata_question: changeQ, flashdata_hint: changeH, flashdata_answer: changeA}
-    }).done(function (res) {
-        console.log(res);
-        window.location.replace('http://localhost:8080');
-        
+function updateDB(req,res) {
+    
+    $(".updateMe").click(function (id) {
+        let id= req.body.id
+        $.ajax({
+            method: "POST",
+            url:"/flashdata",
+            
+            data: {"_id":id},
+            success: function (data) {
+                $(".question").val(data[i].question)
+                $(".hint").val(data[i].hint)
+                $(".answer").val(data[i].answer)
+                console.log(id)
+            }
+        })
     })
 }
+$(".updateM").click(function () {
+    $(".modal2").show()
+    $(".modal3").hide()
+    $(".modal").hide()
+})
+
+$(".updateMe").click(function () {
+    updateDB()
+    $(".modal2").hide()
+    $(".modal3").hide()
+    $(".modal").hide()
+    $(".question").show()
+})
+function deleteDB() {
+   $(".deleteMe").click(function () {
+    $(".modal3").hide()
+    $(".modal2").hide()
+    $(".modal").hide()
+    $(".question").show()
+
+    $.ajax({
+        method: "POST",
+        url:"/delete",
+        success:function (data) {
+            $(".question").html("")
+            $(".hint").html("")
+            $(".answer").html("")
+        }
+    })
+
+}) 
+}
+
+$(".deleteM").click(function () {
+    deleteDB()
+    $(".modal3").show()
+    $(".modal2").hide()
+    $(".modal").hide()
+})
+

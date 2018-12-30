@@ -15,6 +15,8 @@ html, body{
     text-shadow: 3px 2px black;
 }
 .container{
+    display:grid;
+    display: flow-root;
     height: 100%;
     width: 100%;
     text-align: center;
@@ -28,6 +30,24 @@ html, body{
     width: 50%;
     overflow: auto;
 }
+.modal2{
+    display:none;
+    position: fixed;
+    z-index: 1;
+    height: 100%;
+    width: 50%;
+    overflow: auto;
+}
+
+.modal3{
+    display:none;
+    position: fixed;
+    z-index: 1;
+    height: 100%;
+    width: 50%;
+    overflow: auto;
+}
+
 button{
     color: white;
     border-radius: 5px;
@@ -99,9 +119,29 @@ button{
       overflow: auto;
       
     }
+
+    .modal2{
+        display: none;
+        height: 450px;
+        width: 300px;
+        z-index: 1;
+        position: absolute;
+        overflow: auto;
+        
+      }
+
+      .modal3{
+        display: none;
+        height: 450px;
+        width: 300px;
+        z-index: 1;
+        position: absolute;
+        overflow: auto;
+        
+      }
     .modal-content{
         
-        background-size: 100%;
+      background-size: 100%;
       margin: 15px auto;
       padding: 20px;
       border: 1px solid black;

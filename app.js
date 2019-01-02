@@ -3,8 +3,7 @@ const app = express()
 const path = require('path')
 const bodyparser = require('body-parser')
 const MongoClient = require('mongodb').MongoClient
-const objectId = require('mongodb').ObjectID
-const assert = require('assert')
+
 let db
 let triviaCards = []
 
@@ -44,29 +43,29 @@ app.post("/triviaflash" ,(req,res)=> {
     })
 })
 
-app.put("/flashdata", (req,res)=> {
+app.post("/update", (req,res)=> {
     let id = req.body._id
-    console.log(id)
     let items ={
         question: req.body.question,
         hint: req.body.hint,
         answer: req.body.answer
     } 
-    db.collection("flashdata").findOneAndUpdate({_id: objectId(id)}, {$set:items}, function ( result) {
-        assert.equal(null);
-        console.log(items)
-        res.redirect('/')
+    db.collection("flashdata").updateOne({"id": id}, {$set:items}, function ( result) {
+        console.log(result)
+        
     })
-    res.send(items)
+    console.log(items)
+    res.redirect('/')
+    
 }) 
 
-app.delete("/flashdata", (req,res)=> {
+app.post("/delete", (req,res)=> {
     id = req.body._id
-       console.log(id) 
-        db.collection('flashdata').findOneAndDelete({"_id": objectId(id)}, function ( result) {
-            console.log('item updated')
-            res.redirect('/')
+     
+        db.collection('flashdata').deleteOne({"id": id}, function ( result) {
+            console.log('item deleted')
             
         })
-        res.send(id)
+        res.redirect('/')
+       
     })

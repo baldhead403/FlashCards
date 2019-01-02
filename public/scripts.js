@@ -17,6 +17,7 @@ function nextQ(data) {
 
                 i = 0
             }
+            $(".ID").html(data[i]._id)
             $(".question").html(data[i].question)
             $(".hint").html(data[i].hint)
             $(".answer").html(data[i].answer)
@@ -60,59 +61,45 @@ $("#triviaB").click(function () {
     $(".modal").show()
 });
 
-function updateDB() {
+function updateDB(data) {
     
-    $(".updateMe").click(function (id) {
-        let id= req.body._id
-        console.log(id)
         $.ajax({
-            url:"/triviaflash",
-            type: "PUT",
+            type: "POST",
+            url:"/update",
             
             data: {"id":_id},
             success: function (data) {
-                $(".question").val(data[i].question)
-                $(".hint").val(data[i].hint)
-                $(".answer").val(data[i].answer)
-            }
+
+            },
         })
-    })
+        
+        console.log(data)
+   
 }
+
 $(".updateM").click(function () {
     $(".modal2").show()
     $(".modal3").hide()
     $(".modal").hide()
 })
 
-$(".updateMe").click(function () {
-    $(".question").show()
-    updateDB()
-    $(".modal2").hide()
-    $(".modal3").hide()
-    $(".modal").hide()
-})
-function deleteDB() {
-   $(".deleteMe").click(function () {
-    $(".modal3").hide()
-    $(".modal2").hide()
-    $(".modal").hide()
-    $(".question").show()
 
+function deleteDB(data) {
+   
     $.ajax({
-        url:"/triviaflash",
-        type: "DELETE",
+        type: "POST",
+        url:"/delete",
+        data:{"id":_id},
         success:function (data) {
-            $(".question").html("")
-            $(".hint").html("")
-            $(".answer").html("")
+            
         }
     })
 
-}) 
+
 }
 
 $(".deleteM").click(function () {
-    deleteDB()
+  
     $(".modal3").show()
     $(".modal2").hide()
     $(".modal").hide()

@@ -14,7 +14,8 @@ html(lang="en")
        div(class="flip-card-inner")
         div(class="flip-card-front")
               #question
-                h2.question
+                h6.ID
+                h3.question
               br
             
               #hint
@@ -45,7 +46,7 @@ html(lang="en")
         
     .modal2
         .modal-content
-            form(action="/triviaflash"  , type="PUT",  )
+            form(action="/update"  , method="POST",  )
                 input.id(type="text", name="id", placeholder="ID") 
                 input.questDb(type="text", name="question", placeholder="Question") 
                 input.hintDb(type="text", name="hint", placeholder="Hint") 
@@ -55,9 +56,9 @@ html(lang="en")
 
     .modal3
         .modal-content
-            form(action="/triviaflash", type="DELETE", )
+            form(action="/delete", method="POST", )
                 h2#id Enter Content ID
-                input.id(type="text", name="id", placeholder="ID")
+                //- input.id(type="text", name="id", placeholder="ID")
                 button.deleteMe(type="submit") Delete
            
                
